@@ -1,8 +1,20 @@
 type Pass @entity {
   id: ID!
+  owner: String!
   tokenId: BigInt!
   mintedOn: BigInt!
   txnHash: Bytes!
-  tokenURI: String
-  attributes: String
+  tokenURI: String!
+  tokenURIRaw: Bytes
+  metadata: Metadata @derivedFrom(field: "passPointed")
+}
+
+type Metadata @entity {
+  id: ID!
+  passPointed: Pass!
+  name: String
+  description: String
+  image: String
+  animation_url: String
+  attributes: [String!]
 }

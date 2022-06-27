@@ -4,7 +4,7 @@
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --studio tachyon-sigma-pass",
+    "deploy": "graph deploy --product hosted-service anudit/tachyon-sigma-pass",
     "create-local": "graph create --node http://localhost:8020/ tachyon-sigma-pass",
     "remove-local": "graph remove --node http://localhost:8020/ tachyon-sigma-pass",
     "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 tachyon-sigma-pass"

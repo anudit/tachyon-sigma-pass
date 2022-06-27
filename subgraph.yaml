@@ -15,10 +15,11 @@ dataSources:
       language: wasm/assemblyscript
       entities:
         - Pass
+        - Metadata
       abis:
         - name: Contract
           file: ./abis/Contract.json
       eventHandlers:
-        - event: Transfer(address,address,uint256)
+        - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
       file: ./src/mapping.ts

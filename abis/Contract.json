@@ -53,19 +53,94 @@
   "anonymous": false,
   "inputs": [
   {
-  "indexed": false,
+  "indexed": true,
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  },
+  {
+  "indexed": true,
+  "internalType": "bytes32",
+  "name": "previousAdminRole",
+  "type": "bytes32"
+  },
+  {
+  "indexed": true,
+  "internalType": "bytes32",
+  "name": "newAdminRole",
+  "type": "bytes32"
+  }
+  ],
+  "name": "RoleAdminChanged",
+  "type": "event"
+  },
+  {
+  "anonymous": false,
+  "inputs": [
+  {
+  "indexed": true,
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  },
+  {
+  "indexed": true,
+  "internalType": "address",
+  "name": "account",
+  "type": "address"
+  },
+  {
+  "indexed": true,
+  "internalType": "address",
+  "name": "sender",
+  "type": "address"
+  }
+  ],
+  "name": "RoleGranted",
+  "type": "event"
+  },
+  {
+  "anonymous": false,
+  "inputs": [
+  {
+  "indexed": true,
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  },
+  {
+  "indexed": true,
+  "internalType": "address",
+  "name": "account",
+  "type": "address"
+  },
+  {
+  "indexed": true,
+  "internalType": "address",
+  "name": "sender",
+  "type": "address"
+  }
+  ],
+  "name": "RoleRevoked",
+  "type": "event"
+  },
+  {
+  "anonymous": false,
+  "inputs": [
+  {
+  "indexed": true,
   "internalType": "address",
   "name": "from",
   "type": "address"
   },
   {
-  "indexed": false,
+  "indexed": true,
   "internalType": "address",
   "name": "to",
   "type": "address"
   },
   {
-  "indexed": false,
+  "indexed": true,
   "internalType": "uint256",
   "name": "tokenId",
   "type": "uint256"
@@ -95,95 +170,154 @@
   {
   "inputs": [
   {
-  "internalType": "address",
-  "name": "owner",
-  "type": "address"
-  }
-  ],
-  "name": "balanceOf",
-  "outputs": [
+  "internalType": "bytes12",
+  "name": "campaignId",
+  "type": "bytes12"
+  },
   {
-  "internalType": "uint256",
-  "name": "balance",
-  "type": "uint256"
+  "internalType": "bytes32",
+  "name": "merkleRoot",
+  "type": "bytes32"
+  },
+  {
+  "internalType": "uint64",
+  "name": "expireAt",
+  "type": "uint64"
   }
   ],
-  "stateMutability": "view",
+  "name": "createCampaign",
+  "outputs": [],
+  "stateMutability": "nonpayable",
   "type": "function"
   },
   {
   "inputs": [
   {
-  "internalType": "uint256",
-  "name": "tokenId",
-  "type": "uint256"
+  "internalType": "bytes12",
+  "name": "campaignId",
+  "type": "bytes12"
   }
   ],
-  "name": "getApproved",
-  "outputs": [
+  "name": "disableCampaign",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  },
   {
   "internalType": "address",
-  "name": "operator",
+  "name": "account",
   "type": "address"
   }
   ],
-  "stateMutability": "view",
+  "name": "grantRole",
+  "outputs": [],
+  "stateMutability": "nonpayable",
   "type": "function"
   },
   {
   "inputs": [
   {
   "internalType": "address",
-  "name": "owner",
+  "name": "recipient",
   "type": "address"
   },
-  {
-  "internalType": "address",
-  "name": "operator",
-  "type": "address"
-  }
-  ],
-  "name": "isApprovedForAll",
-  "outputs": [
-  {
-  "internalType": "bool",
-  "name": "",
-  "type": "bool"
-  }
-  ],
-  "stateMutability": "view",
-  "type": "function"
-  },
-  {
-  "inputs": [],
-  "name": "name",
-  "outputs": [
   {
   "internalType": "string",
-  "name": "",
+  "name": "tokenUri",
   "type": "string"
   }
   ],
-  "stateMutability": "view",
+  "name": "mintNFT",
+  "outputs": [
+  {
+  "internalType": "uint256",
+  "name": "",
+  "type": "uint256"
+  }
+  ],
+  "stateMutability": "nonpayable",
   "type": "function"
   },
   {
   "inputs": [
   {
+  "internalType": "bytes12",
+  "name": "campaignId",
+  "type": "bytes12"
+  },
+  {
+  "internalType": "bytes32[]",
+  "name": "proof",
+  "type": "bytes32[]"
+  },
+  {
+  "internalType": "bytes",
+  "name": "sign",
+  "type": "bytes"
+  },
+  {
+  "internalType": "address",
+  "name": "recipient",
+  "type": "address"
+  },
+  {
+  "internalType": "string",
+  "name": "tokenUri",
+  "type": "string"
+  }
+  ],
+  "name": "mintNFTCampaign",
+  "outputs": [
+  {
   "internalType": "uint256",
-  "name": "tokenId",
+  "name": "",
   "type": "uint256"
   }
   ],
-  "name": "ownerOf",
-  "outputs": [
+  "stateMutability": "nonpayable",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  },
   {
   "internalType": "address",
-  "name": "owner",
+  "name": "account",
   "type": "address"
   }
   ],
-  "stateMutability": "view",
+  "name": "renounceRole",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  },
+  {
+  "internalType": "address",
+  "name": "account",
+  "type": "address"
+  }
+  ],
+  "name": "revokeRole",
+  "outputs": [],
+  "stateMutability": "nonpayable",
   "type": "function"
   },
   {
@@ -228,7 +362,7 @@
   },
   {
   "internalType": "bytes",
-  "name": "data",
+  "name": "_data",
   "type": "bytes"
   }
   ],
@@ -246,13 +380,429 @@
   },
   {
   "internalType": "bool",
-  "name": "_approved",
+  "name": "approved",
   "type": "bool"
   }
   ],
   "name": "setApprovalForAll",
   "outputs": [],
   "stateMutability": "nonpayable",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "address",
+  "name": "from",
+  "type": "address"
+  },
+  {
+  "internalType": "address",
+  "name": "to",
+  "type": "address"
+  },
+  {
+  "internalType": "uint256",
+  "name": "tokenId",
+  "type": "uint256"
+  }
+  ],
+  "name": "transferFrom",
+  "outputs": [],
+  "stateMutability": "nonpayable",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "address",
+  "name": "_trustedForwarder",
+  "type": "address"
+  },
+  {
+  "internalType": "bytes12",
+  "name": "_communityId",
+  "type": "bytes12"
+  },
+  {
+  "internalType": "address",
+  "name": "_creator",
+  "type": "address"
+  },
+  {
+  "internalType": "address",
+  "name": "_registrar",
+  "type": "address"
+  },
+  {
+  "internalType": "string",
+  "name": "_name",
+  "type": "string"
+  },
+  {
+  "internalType": "string",
+  "name": "_symbol",
+  "type": "string"
+  },
+  {
+  "internalType": "string",
+  "name": "_description",
+  "type": "string"
+  }
+  ],
+  "stateMutability": "nonpayable",
+  "type": "constructor"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "address",
+  "name": "owner",
+  "type": "address"
+  }
+  ],
+  "name": "balanceOf",
+  "outputs": [
+  {
+  "internalType": "uint256",
+  "name": "",
+  "type": "uint256"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes12",
+  "name": "id",
+  "type": "bytes12"
+  }
+  ],
+  "name": "campaignExist",
+  "outputs": [
+  {
+  "internalType": "bool",
+  "name": "",
+  "type": "bool"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes12",
+  "name": "",
+  "type": "bytes12"
+  }
+  ],
+  "name": "campaigns",
+  "outputs": [
+  {
+  "internalType": "bytes32",
+  "name": "merkleRoot",
+  "type": "bytes32"
+  },
+  {
+  "internalType": "uint64",
+  "name": "expireAt",
+  "type": "uint64"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [],
+  "name": "communityId",
+  "outputs": [
+  {
+  "internalType": "bytes12",
+  "name": "",
+  "type": "bytes12"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [],
+  "name": "creator",
+  "outputs": [
+  {
+  "internalType": "address",
+  "name": "",
+  "type": "address"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [],
+  "name": "DEFAULT_ADMIN_ROLE",
+  "outputs": [
+  {
+  "internalType": "bytes32",
+  "name": "",
+  "type": "bytes32"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [],
+  "name": "description",
+  "outputs": [
+  {
+  "internalType": "string",
+  "name": "",
+  "type": "string"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "uint256",
+  "name": "tokenId",
+  "type": "uint256"
+  }
+  ],
+  "name": "getApproved",
+  "outputs": [
+  {
+  "internalType": "address",
+  "name": "",
+  "type": "address"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [],
+  "name": "getMsgSender",
+  "outputs": [
+  {
+  "internalType": "address",
+  "name": "",
+  "type": "address"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  }
+  ],
+  "name": "getRoleAdmin",
+  "outputs": [
+  {
+  "internalType": "bytes32",
+  "name": "",
+  "type": "bytes32"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  },
+  {
+  "internalType": "uint256",
+  "name": "index",
+  "type": "uint256"
+  }
+  ],
+  "name": "getRoleMember",
+  "outputs": [
+  {
+  "internalType": "address",
+  "name": "",
+  "type": "address"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  }
+  ],
+  "name": "getRoleMemberCount",
+  "outputs": [
+  {
+  "internalType": "uint256",
+  "name": "",
+  "type": "uint256"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes32",
+  "name": "role",
+  "type": "bytes32"
+  },
+  {
+  "internalType": "address",
+  "name": "account",
+  "type": "address"
+  }
+  ],
+  "name": "hasRole",
+  "outputs": [
+  {
+  "internalType": "bool",
+  "name": "",
+  "type": "bool"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "address",
+  "name": "owner",
+  "type": "address"
+  },
+  {
+  "internalType": "address",
+  "name": "operator",
+  "type": "address"
+  }
+  ],
+  "name": "isApprovedForAll",
+  "outputs": [
+  {
+  "internalType": "bool",
+  "name": "",
+  "type": "bool"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "bytes12",
+  "name": "id",
+  "type": "bytes12"
+  }
+  ],
+  "name": "isCampaignActive",
+  "outputs": [
+  {
+  "internalType": "bool",
+  "name": "",
+  "type": "bool"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "address",
+  "name": "forwarder",
+  "type": "address"
+  }
+  ],
+  "name": "isTrustedForwarder",
+  "outputs": [
+  {
+  "internalType": "bool",
+  "name": "",
+  "type": "bool"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [],
+  "name": "MINTER_ROLE",
+  "outputs": [
+  {
+  "internalType": "bytes32",
+  "name": "",
+  "type": "bytes32"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [],
+  "name": "name",
+  "outputs": [
+  {
+  "internalType": "string",
+  "name": "",
+  "type": "string"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [
+  {
+  "internalType": "uint256",
+  "name": "tokenId",
+  "type": "uint256"
+  }
+  ],
+  "name": "ownerOf",
+  "outputs": [
+  {
+  "internalType": "address",
+  "name": "",
+  "type": "address"
+  }
+  ],
+  "stateMutability": "view",
+  "type": "function"
+  },
+  {
+  "inputs": [],
+  "name": "registrar",
+  "outputs": [
+  {
+  "internalType": "address",
+  "name": "",
+  "type": "address"
+  }
+  ],
+  "stateMutability": "view",
   "type": "function"
   },
   {
@@ -291,49 +841,6 @@
   "inputs": [
   {
   "internalType": "uint256",
-  "name": "index",
-  "type": "uint256"
-  }
-  ],
-  "name": "tokenByIndex",
-  "outputs": [
-  {
-  "internalType": "uint256",
-  "name": "",
-  "type": "uint256"
-  }
-  ],
-  "stateMutability": "view",
-  "type": "function"
-  },
-  {
-  "inputs": [
-  {
-  "internalType": "address",
-  "name": "owner",
-  "type": "address"
-  },
-  {
-  "internalType": "uint256",
-  "name": "index",
-  "type": "uint256"
-  }
-  ],
-  "name": "tokenOfOwnerByIndex",
-  "outputs": [
-  {
-  "internalType": "uint256",
-  "name": "tokenId",
-  "type": "uint256"
-  }
-  ],
-  "stateMutability": "view",
-  "type": "function"
-  },
-  {
-  "inputs": [
-  {
-  "internalType": "uint256",
   "name": "tokenId",
   "type": "uint256"
   }
@@ -347,42 +854,6 @@
   }
   ],
   "stateMutability": "view",
-  "type": "function"
-  },
-  {
-  "inputs": [],
-  "name": "totalSupply",
-  "outputs": [
-  {
-  "internalType": "uint256",
-  "name": "",
-  "type": "uint256"
-  }
-  ],
-  "stateMutability": "view",
-  "type": "function"
-  },
-  {
-  "inputs": [
-  {
-  "internalType": "address",
-  "name": "from",
-  "type": "address"
-  },
-  {
-  "internalType": "address",
-  "name": "to",
-  "type": "address"
-  },
-  {
-  "internalType": "uint256",
-  "name": "tokenId",
-  "type": "uint256"
-  }
-  ],
-  "name": "transferFrom",
-  "outputs": [],
-  "stateMutability": "nonpayable",
   "type": "function"
   }
   ]
