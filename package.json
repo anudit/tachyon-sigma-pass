@@ -1,0 +1,16 @@
+{
+  "name": "tachyon-sigma-pass",
+  "license": "UNLICENSED",
+  "scripts": {
+    "codegen": "graph codegen",
+    "build": "graph build",
+    "deploy": "graph deploy --studio tachyon-sigma-pass",
+    "create-local": "graph create --node http://localhost:8020/ tachyon-sigma-pass",
+    "remove-local": "graph remove --node http://localhost:8020/ tachyon-sigma-pass",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 tachyon-sigma-pass"
+  },
+  "dependencies": {
+    "@graphprotocol/graph-cli": "0.29.0",
+    "@graphprotocol/graph-ts": "^0.27.0"
+  }
+}

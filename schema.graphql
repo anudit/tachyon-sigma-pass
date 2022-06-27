@@ -1,0 +1,8 @@
+type Pass @entity {
+  id: ID!
+  tokenId: BigInt!
+  mintedOn: BigInt!
+  txnHash: Bytes!
+  tokenURI: String
+  attributes: String
+}
